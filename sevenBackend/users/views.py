@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from sevenBackend.users.models import User
+from django.http import JsonResponse
+from sevenBackend.users.serializers import UserSerializer
+from rest_framework import viewsets
 
 # Create your views here.
-def user(request):
-    if request.method == 'GET':
-        return HttpResponse("ok!")
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
