@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'sevenBackend.users'
+    'sevenBackend.users',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -48,7 +48,9 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'sevenBackend.urls'
@@ -71,6 +73,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sevenBackend.wsgi.application'
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000',
+    'https://localhost:8000',
+    'http://localhost:4200',
+    'https://localhost:4200'
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
